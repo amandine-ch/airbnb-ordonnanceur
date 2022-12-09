@@ -37,8 +37,8 @@ Cloner le projet
 se rendre dans le dossier du projet
 // go to the root directory
 
-supprimer les fichiers .o et l'éxécutable
-// delete the file .o and the and the executable
+viderles dossier obj et bin
+// to clean the obj and bin folders
 
 ```bash
   make clean
