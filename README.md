@@ -27,6 +27,13 @@ finally the user have to enter the number of lodging from the data he wish to co
 
 ## Run le projet localement
 
+Cloner le projet 
+// clone the project
+
+```bash
+  git clone https://github.com/amandine-ch/airbnb-ordonnanceur
+```
+
 se rendre dans le dossier du projet.
 // go to the project folder
 
