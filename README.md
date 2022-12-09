@@ -34,12 +34,9 @@ Cloner le projet
   git clone https://github.com/amandine-ch/airbnb-ordonnanceur
 ```
 
-se rendre dans le dossier du projet.
-// go to the project folder
+se rendre dans le dossier du projet
+// go to the root directory
 
-```bash
-  cd tdnote
-```
 supprimer les fichiers .o et l'éxécutable
 // delete the file .o and the and the executable
 
