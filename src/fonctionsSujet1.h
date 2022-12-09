@@ -34,6 +34,6 @@ int partition(logement * tab, int left, int right);
 void quickSort(logement * tab, int left, int right);
 int nbLogement ();
 float priceCalculation (logement * tab, int nbComp);
-void Price (logement * tab);
+void Price (logement * tab, logement logementComp);
 
 #endif
