@@ -1,5 +1,5 @@
 
-# Programmation procédurale
+# Prédiction Airbnb
 
 ## Auteurs
 
@@ -7,7 +7,7 @@
 
 - [Amandine Chantome](https://github.com/amandine-ch)
 
-## Prédiction Airbnb
+## Description
 
 Programme qui permet de prédire le prix d'un logement.
 En utilisant un fichier de data en CSV on peut par la suite prédire le prix de logement renseigné.
