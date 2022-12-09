@@ -51,7 +51,8 @@ logement * openCsv(){
             tabLogement[n].bed=strtof(strToken,NULL);
 
             strToken=strsep(bp,",");
-            tabLogement[n].price=strtof(strToken,NULL);
+            float pricetest = strtof(strToken, NULL);
+            tabLogement[n].price = pricetest;
 
             strToken=strsep(bp,",");
             tabLogement[n].min_night=strtof(strToken,NULL);
@@ -125,7 +126,7 @@ logement inputlog(){
         logementx.reviews = -1;
         
         logementx.distance = -1;
-
+        
         return logementx;
 }
 
@@ -312,9 +313,24 @@ float priceCalculation (logement * tab, int nbComp){
     return price/nbComp;
 }
 
+// display the lodging the user want to compare
+void displayArray (logement logementComp) {
+  printf("-------------------------------------------------\n\nPour un bien avec ces informations :\n");
+  printf("capacité de logement : %d\n", logementComp.accomodate);
+  printf("chambres : %d \n", logementComp.bedroom);
+  printf("salle de bain : %d \n", logementComp.bathroom);
+  printf("lits : %d \n", logementComp.bed);
+  // printf("prix : %f \n", logementComp.price);
+  printf("nombre minimum de nuits : %d \n", logementComp.min_night);
+  printf("nombre maximum de nuits : %d \n\n", logementComp.max_night);
+
+  // printf("distance : %f \n", logementComp.distance);
+}
+
 //call the necessary functions to get the price.
-void Price (logement * tab){
+void Price (logement * tab, logement  logementComp){
     int nbcomp = nbLogement ();
     float price = priceCalculation (tab, nbcomp);
-    printf("le prix de votre bien est de : %f €\n", price);
+    displayArray(logementComp);
+    printf("le prix prédit est de : %f €\n", price);
 }
