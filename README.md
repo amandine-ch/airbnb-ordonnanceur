@@ -19,20 +19,10 @@ With the use of the data from a CSV file, we can then predict the price of the i
 The user- have to give informations on his lodging (number of rooms, bathrooms, beds...), then the number of attributes he wish to compare while precising which ones.
 finally the user have to enter the number of lodging from the data he wish to compare his own housing to, he will then be able to get a price.
 
-
-## Ordonnancement de processus
-
-
-
-
 ## Run le projet localement
 
 Cloner le projet 
 // clone the project
-
-```bash
-  git clone https://github.com/amandine-ch/airbnb-ordonnanceur
-```
 
 se rendre dans le dossier du projet
 // go to the root directory
