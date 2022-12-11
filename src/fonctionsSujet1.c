@@ -71,22 +71,38 @@ logement * openCsv(){
     return tabLogement;
 }
 
+void emptyBuff(){
+  int c =0;
+  while(c != '\n'){
+    c = getchar();
+  }
+}
+
 //check if the char sent is an int or no
 int saisieEntier(char * n){
     int length,i, num; 
-    char input[256] = "";
+    char input[10];
 
     length = strlen (n);
-    for (i = 0 ; i < length ; i++){
-        if (!isdigit(n[i]))
-        {
-            printf("saisie incorrecte : valeur entrée n'est pas un entier\n");
-            printf("Veuillez saisir une nouvelle valeur : \n");
-            scanf("%s", input);
-            saisieEntier(input);
+    if (n[length -1 ] != '\n'){
+          emptyBuff();
+          printf("saisie incorrecte \n");
+          printf("Veuillez saisir une nouvelle valeur : \n");
+          fgets(input, 10, stdin);
+          saisieEntier(input);
         }
+        
+    for (i = 0 ; i < length-1 ; i++){
+        if (!isdigit(n[i]) || length > 10){
+          printf("saisie incorrecte : valeur entrée n'est pas un entier\n");
+          printf("Veuillez saisir une nouvelle valeur : \n");
+          fgets(input, 10, stdin);
+          saisieEntier(input);
+        }
+        
     }
     num = atoi(n);
+    
     return num;
 }
 
@@ -94,33 +110,33 @@ int saisieEntier(char * n){
 // ask user to complete the informations of logement x
 logement inputlog(){
         logement logementx;
-        char n[256] = "";
+        char n[10];
 
         printf("\n\nVeuillez entrer les informations du bien a évaluer: \n");
         printf("nombre de personnes logées :\n");
-        scanf("%s", n);
+        fgets(n, 10, stdin);
         logementx.accomodate = saisieEntier(n);
 
         printf("nombre de chambres :\n");
-        scanf("%s", n);
+        fgets(n, 10, stdin);
         logementx.bedroom = saisieEntier(n);
 
         printf("nombre de salle de bain :\n");
-        scanf("%s", n);
+        fgets(n, 10, stdin);
         logementx.bathroom = saisieEntier(n);
 
         printf("nombre de lits :\n");
-        scanf("%s", n);
+        fgets(n, 10, stdin);
         logementx.bed = saisieEntier(n);
 
         logementx.price = -1;
 
         printf("nombre minimum de nuits:\n");
-        scanf("%s", n);
+        fgets(n, 10, stdin);
         logementx.min_night = saisieEntier(n);
 
         printf("nombre maximum de nuits :\n");
-        scanf("%s", n);
+        fgets(n, 10, stdin);
         logementx.max_night = saisieEntier(n);
 
         logementx.reviews = -1;
@@ -144,7 +160,7 @@ int  verifdouble (int * tabAttr, int i){
 // create the array containing wthe number representative of the attributes
 int * createTabAttr(int nbAttr){
   int * tabAttr = (int*) malloc(nbAttr * sizeof(int));
-  char n[256] = "";
+  char n[10];
   int numAttr;
 
   //if we ask for 6 attributes we won't need to ask which ones exactly
@@ -158,12 +174,12 @@ int * createTabAttr(int nbAttr){
     printf("Veuillez indiquer les éléments a comparer : \n\n");
     for (int i = 0; i < nbAttr; i++){
       printf("attribut n° %d : \n", i+1);
-      scanf("%s", n);
+      fgets(n, 10, stdin);
       numAttr = saisieEntier(n);
 
       while (numAttr > 6 || verifdouble(tabAttr, i)){
         printf("Erreur !\n Valeur entrée supérieure au nombre d'attributs ou a déja été entrée.\nVeuillez en entrer un nouveau : \n");
-        scanf("%s", n);
+        fgets(n, 10, stdin);
         numAttr = saisieEntier(n);
       }
       tabAttr[i] = numAttr;
@@ -220,18 +236,18 @@ float calcDist (int * tabAttr, int nbAttr, logement positionI, logement logement
 }
 
 // function which permit to choose how many attributes we want to compare and call necessary function.
-void distance (logement * tab, logement logementTest){
+void distance (logement * tab, logement  logementTest){
   int nbAttr;
-  char n[256] = "";
+  char n[10];
 
   printf("\nVeuillez entre le nombre d'attributs que vous voulez comparer (6 maximum) : \n");
-  scanf("%s", n);
+  fgets(n, 10, stdin);
   nbAttr = saisieEntier(n);
 
   // verify if the user ask for more attributes than the ones existing
   while (nbAttr > 6 ){
     printf("Erreur !\n Valeur entrée supérieure au nombre d'attributs, veuillez en entrer un nouveau : \n");
-    scanf("%s", n);
+    fgets(n, 10, stdin);
     nbAttr = saisieEntier(n);
   }
 
@@ -295,10 +311,10 @@ void quickSort(logement * tab, int left, int right) {
 // permit to know how many accomodations we want to compare 
 int nbLogement (){
     int nbcomp = 0;
-    char n[256] = "";
+    char n[10];
 
-    printf("\nveuillez entrer le nombre de logement(s) a comparer pour trouvber le prix:\n");
-    scanf("%s", n);
+    printf("\nveuillez entrer le nombre de logement(s) a comparer pour trouver le prix:\n");
+    fgets(n, 10, stdin);
     nbcomp = saisieEntier(n);
     return nbcomp;
 }
@@ -334,3 +350,5 @@ void Price (logement * tab, logement  logementComp){
     displayArray(logementComp);
     printf("le prix prédit est de : %f €\n", price);
 }
+
+
