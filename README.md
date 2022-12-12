@@ -3,7 +3,7 @@
 
 ## Auteurs
 
-- [Adam Boislevant Fleury]()
+- [Adam Boislevant Fleury](https://github.com/AdamBoislevant)
 
 - [Amandine Chantome](https://github.com/amandine-ch)
 
