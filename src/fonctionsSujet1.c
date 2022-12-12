@@ -1,6 +1,6 @@
 #include "fonctionsSujet1.h"
 
-//Ouvre le fichier csv et remplir le tableau de structure correspondant
+//Ouvre le fichier csv et rempli le tableau de structure correspondant
 logement * openCsv(){
   // logement tabLogement[lenghTab];
   logement * tabLogement = (logement*) malloc(lenghTab*sizeof(logement));
@@ -107,7 +107,7 @@ int saisieEntier(char * n){
 }
 
 // create logement x we have to compare
-// ask user to complete the informations of logement x
+// ask user to complete the informations of logement x and verify if the input is correct
 logement inputlog(){
         logement logementx;
         char n[10];
@@ -157,7 +157,7 @@ int  verifdouble (int * tabAttr, int i){
   return 0;
 }
 
-// create the array containing wthe number representative of the attributes
+// create the array containing the number representative of the attributes
 int * createTabAttr(int nbAttr){
   int * tabAttr = (int*) malloc(nbAttr * sizeof(int));
   char n[10];
@@ -169,6 +169,9 @@ int * createTabAttr(int nbAttr){
       tabAttr[i] = i + 1;
     }
   }
+	// print the possible attributes
+	// ask the user to enter the number corresponding to the attribute
+	// verify this number then put it in the array tabAttr
   else {
     printf("\n1 - Loge\n2 - chambre\n3 - salle de bain\n4 - lit\n5 - nombre de nuits minimums\n6 - nombre de nuits maximum\n");
     printf("Veuillez indiquer les éléments a comparer : \n\n");
@@ -190,6 +193,7 @@ int * createTabAttr(int nbAttr){
 }
 
 // calcul de la distance
+// for each attributes contained in tabAttr enter the switch case
 // sum everything together for each attributes than sqrt the total to get the result
 float calcDist (int * tabAttr, int nbAttr, logement positionI, logement logementTest){
   float sum = 0;
@@ -253,7 +257,7 @@ void distance (logement * tab, logement  logementTest){
 
   int * tabAttr = createTabAttr(nbAttr);
 
-  // calculation of the distance for each logement present in tabAttr
+  // calculation of the distance for each housing from the data and the logement x
   for (int i = 0; i < lenghTab; i++){
     tab[i].distance = calcDist(tabAttr, nbAttr, tab[i], logementTest);
   }
@@ -298,7 +302,6 @@ int partition(logement * tab, int left, int right) {
   return (i + 1);
 }
 
-// sort of type quicksort
 void quickSort(logement * tab, int left, int right) {
   if (left < right) {
     int piv = partition(tab, left, right);
@@ -307,8 +310,7 @@ void quickSort(logement * tab, int left, int right) {
   }
 }
 
-
-// permit to know how many accomodations we want to compare 
+// allows to know how many accomodations the user want to compare 
 int nbLogement (){
     int nbcomp = 0;
     char n[10];
@@ -320,6 +322,7 @@ int nbLogement (){
 }
 
 // calculation of the price
+// sum the price of each lodging from 0 to nbComp in tab then return the average
 float priceCalculation (logement * tab, int nbComp){
     float price = 0;
 
@@ -336,11 +339,8 @@ void displayArray (logement logementComp) {
   printf("chambres : %d \n", logementComp.bedroom);
   printf("salle de bain : %d \n", logementComp.bathroom);
   printf("lits : %d \n", logementComp.bed);
-  // printf("prix : %f \n", logementComp.price);
   printf("nombre minimum de nuits : %d \n", logementComp.min_night);
   printf("nombre maximum de nuits : %d \n\n", logementComp.max_night);
-
-  // printf("distance : %f \n", logementComp.distance);
 }
 
 //call the necessary functions to get the price.
